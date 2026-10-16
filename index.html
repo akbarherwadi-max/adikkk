@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>For You, Adikk 💗</title>
+<style>
+body {
+  margin: 0;
+  padding: 20px;
+  min-height: 100vh;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #ffe4ec, #f3e5ff);
+  font-family: Arial, sans-serif;
+  color: #86415f;
+}
+.card {
+  width: 100%;
+  max-width: 380px;
+  padding: 25px 20px;
+  box-sizing: border-box;
+  text-align: center;
+  background: white;
+  border-radius: 25px;
+  box-shadow: 0 10px 30px #db709355;
+}
+h1 { color: #e75480; }
+.hearts { font-size: 30px; }
+.message {
+  white-space: pre-line;
+  line-height: 1.7;
+  background: #fff0f5;
+  border-radius: 16px;
+  padding: 20px 12px;
+  margin: 20px 0;
+  min-height: 100px;
+}
+button {
+  display: block;
+  width: 100%;
+  margin: 9px 0;
+  padding: 14px;
+  border: 0;
+  border-radius: 13px;
+  background: #e75480;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.purple { background: #ad7be8; }
+.orange { background: #ef967e; }
+#rain {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.heart {
+  position: absolute;
+  bottom: -30px;
+  animation: naik 3s linear forwards;
+}
+@keyframes naik {
+  to { transform: translateY(-110vh); opacity: 0; }
+}
+</style>
+</head>
+<body>
+<div id="rain"></div>
+<main class="card">
+  <div class="hearts">💗 💖 💕</div>
+  <h1>Hai, Adikk ! 🥰</h1>
+  <p>A little surprise made just for you.</p>
+
+  <div class="message" id="pesan">Ada kejutan kecil buat kamu!
+Tekan tombol di bawah ya 💌</div>
+
+  <button onclick="kejutan()">🎁 Buka Kejutan</button>
+  <button class="purple" onclick="surat()">💌 Surat Rahasia</button>
+  <button class="orange" onclick="semangat()">🌷 Pesan Penyemangat</button>
+  <p>Made with love ❤️</p>
+</main>
+
+<script>
+const pesanCinta = [
+  "Pengumuman! Ada seseorang yang lagi kangen kamu. Iya, aku! 😭💕",
+  "Jangan lupa makan dan istirahat ya, Adikk 🌷",
+  "Terima kasih sudah membuat hari-hariku lebih berwarna ❤️",
+  "Kalau hari ini berat, pelan-pelan aja. Semangat! 🫶"
+];
+
+function tampilkan(teks) {
+  document.getElementById("pesan").textContent = teks;
+}
+
+function kejutan() {
+  tampilkan(pesanCinta[Math.floor(Math.random() * pesanCinta.length)]);
+  for (let i = 0; i < 15; i++) {
+    const h = document.createElement("span");
+    h.className = "heart";
+    h.textContent = "💗";
+    h.style.left = Math.random() * 100 + "vw";
+    h.style.animationDelay = Math.random() + "s";
+    h.style.fontSize = "25px";
+    document.getElementById("rain").appendChild(h);
+    setTimeout(() => h.remove(), 4000);
+  }
+}
+
+function surat() {
+  tampilkan(`Hai, Adikk ! 💌
+
+Aku bikin kejutan kecil ini khusus buat kamu.
+
+Mungkin sederhana, tapi semoga bisa
+membuat kamu tersenyum.
+
+Terima kasih sudah hadir dalam
+cerita hidupku.
+
+Jangan lupa bahagia ya! ❤️`);
+}
+
+function semangat() {
+  const daftar = [
+    "Kamu hebat karena terus berusaha! 🌟",
+    "Jangan terlalu keras sama diri sendiri ya 💗",
+    "Semoga hari kamu menyenangkan! 🌷",
+    "Istirahat juga penting. Jaga diri baik-baik ya 🫶"
+  ];
+  tampilkan(daftar[Math.floor(Math.random() * daftar.length)]);
+}
+</script>
+</body>
+</html>
